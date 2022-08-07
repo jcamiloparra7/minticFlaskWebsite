@@ -5,8 +5,8 @@ views = Blueprint('views', __name__)
 
 
 @views.route('/', methods=['GET', 'POST'])
-def home():
+def catalogo():
     if request.method == 'POST':
         pass
 
-    return render_template("index.html")
+    return render_template("catalogo.html")
