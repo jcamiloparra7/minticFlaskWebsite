@@ -9,4 +9,26 @@ def catalogo():
     if request.method == 'POST':
         pass
 
-    return render_template("catalogo.html")
+    inventario = [{'name': 'Hamburguesa',
+                  'price': 10000},
+                  {'name': 'Perro',
+                   'price': 8000}]
+
+    return render_template("catalogo.html", inventario=inventario)
+
+@views.route('/carrito', methods=['GET', 'POST'])
+def carrito():
+    if request.method == 'POST':
+        pass
+
+    inventario = {'1': 1,
+                  '2': 2,
+                  '3': 3,
+                  '4': 4,
+                  '5': 5,
+                  '6': 6,
+                  '7': 7
+                  }
+
+    return render_template("cart.html", inventario=inventario)
+
