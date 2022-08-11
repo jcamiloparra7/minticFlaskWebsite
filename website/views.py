@@ -1,8 +1,6 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from flask_login import current_user, login_required, current_user
-from sqlalchemy import select
-from website import db
-from .models import Product, User
+from flask_login import login_required, current_user
+from .models import Product
 
 views = Blueprint('views', __name__)
 
@@ -10,12 +8,19 @@ views = Blueprint('views', __name__)
 @views.route('/', methods=['GET', 'POST'])
 def catalogo():
     if request.method == 'POST':
-        pass
+        if current_user.is_authenticated:
+            pass
+        else:
+            redirect(url_for('auth.login'))
+            flash('Antes de comprar debes iniciar sesion', category='info')
+
+    inventory = Product.query.all()
 
     productos =  Product.query.all()
     return render_template("catalogo.html", inventario=productos)
 
 @views.route('/carrito', methods=['GET', 'POST'])
+@login_required
 def carrito():
     if request.method == 'POST':
         pass
