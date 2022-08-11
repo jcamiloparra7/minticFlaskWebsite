@@ -11,6 +11,7 @@ class Product(db.Model):
     price = db.Column(db.Integer)
     image_url = db.Column(db.String(200))
 
+
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     password = db.Column(db.String(150))
@@ -19,14 +20,9 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(150), unique=True)
     cart = db.relationship('Cart')
 
+
 class Cart(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     id_user = db.Column(db.Integer, db.ForeignKey('user.id'))
     id_product = db.Column(db.Integer, db.ForeignKey('product.id'))
     date = db.Column(db.DateTime(timezone=True), default=func.now())
-
-
-
-
-
-
