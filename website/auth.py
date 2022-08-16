@@ -17,7 +17,7 @@ def login():
 
         user = User.query.filter_by(email=email).first()
 
-        if user:
+        if user and password:
             if check_password_hash(user.password, password):
                 flash('Inicio de sesion exitoso!', category='sucess')
                 login_user(user, remember=True)
