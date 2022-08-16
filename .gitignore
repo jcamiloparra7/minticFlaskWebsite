@@ -1,6 +1,9 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+<<<<<<< HEAD
 __pycache__/*
+=======
+>>>>>>> master
 *.py[cod]
 *$py.class
 
@@ -162,4 +165,8 @@ cython_debug/
 
 venv/*
 
+<<<<<<< HEAD
 .DS_Store
+=======
+.DS_STORE
+>>>>>>> master

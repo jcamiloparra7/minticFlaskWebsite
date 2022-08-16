@@ -34,6 +34,7 @@ class Product(db.Model):
     )
 
 
+
 class User(db.Model, UserMixin):
     __tablename__ = "users"
 
@@ -85,3 +86,11 @@ class User(db.Model, UserMixin):
 #     id_user = db.Column(db.Integer, db.ForeignKey('user.id'))
 #     id_product = db.Column(db.Integer, db.ForeignKey('product.id'))
 #     date = db.Column(db.DateTime(timezone=True), default=func.now())
+    # cart = db.relationship('Cart')
+
+
+# class Cart(db.Model):
+    # id = db.Column(db.Integer, primary_key=True)
+    # id_user = db.Column(db.Integer, db.ForeignKey('user.id'))
+    # id_product = db.Column(db.Integer, db.ForeignKey('product.id'))
+    # date = db.Column(db.DateTime(timezone=True), default=func.now())
