@@ -1,5 +1,8 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from . import db
+from flask_login import current_user, login_required, current_user
+from sqlalchemy import select
+from website import db
+from .models import Product, User
 
 views = Blueprint('views', __name__)
 
@@ -9,26 +12,33 @@ def catalogo():
     if request.method == 'POST':
         pass
 
-    inventario = [{'name': 'Hamburguesa',
-                  'price': 10000},
-                  {'name': 'Perro',
-                   'price': 8000}]
-
-    return render_template("catalogo.html", inventario=inventario)
+    productos =  Product.query.all()
+    return render_template("catalogo.html", inventario=productos)
 
 @views.route('/carrito', methods=['GET', 'POST'])
 def carrito():
     if request.method == 'POST':
         pass
 
-    inventario = {'1': 1,
-                  '2': 2,
-                  '3': 3,
-                  '4': 4,
-                  '5': 5,
-                  '6': 6,
-                  '7': 7
-                  }
+    # If user is anonymous
+    if current_user.is_anonymous:
+        carritoUsuario = []
+    else:
+        # Cart products without quantity
+        carritoUsuario = current_user.products
+
+    return render_template("cart.html", carrito=carritoUsuario)
+
+@views.route('/carrito/<add>', methods=['GET', 'POST'])
+def add():
+    if request.method == 'POST':
+        pass
+
+
 
     return render_template("cart.html", inventario=inventario)
 
+@views.route('/producto/<id>', methods = ['GET', 'POST'])
+def producto(id):
+    producto = Product.query.get_or_404(id)
+    return render_template("product.html", producto=producto)
