@@ -7,17 +7,27 @@ views = Blueprint('views', __name__)
 
 @views.route('/', methods=['GET', 'POST'])
 def catalogo():
+
     if request.method == 'POST':
         if current_user.is_authenticated:
-            pass
+            product_id = request.form.get('product_id')
+            item_carrito = Cart(id_user=current_user.get_id(), id_product=product_id)
+            db.session.add(item_carrito)
+            db.session.commit()
+            flash('Objeto añadido al carrito', category='success')
         else:
-            redirect(url_for('auth.login'))
-            flash('Antes de comprar debes iniciar sesion', category='info')
+            flash('Por favor inicia sesion')
+            return redirect(url_for('auth.login'))
+
+        # if current_user.is_authenticated:
+        #     redirect(url_for('views.carrito'))
+        # else:
+        #     redirect(url_for('auth.login'))
+        #     flash('Antes de comprar debes iniciar sesion', category='info')
 
     inventory = Product.query.all()
 
-    productos =  Product.query.all()
-    return render_template("catalogo.html", inventario=productos)
+    return render_template("catalogo.html", inventario=inventory)
 
 @views.route('/carrito', methods=['GET', 'POST'])
 @login_required

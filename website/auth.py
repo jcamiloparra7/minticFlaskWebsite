@@ -75,7 +75,7 @@ def signup():
 
 
 @auth.route('/logout')
-@login_required
 def logout():
+    flash('Sesion cerrada satisfactoriamente', category='success')
     logout_user()
     return redirect(url_for('auth.login'))
