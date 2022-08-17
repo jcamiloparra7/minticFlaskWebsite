@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block page_header %}Home - Confiteria{% endblock %}
+
+{% block tittle %}Hola Admin{% endblock %}
+{% block subtittle %}Maneja los clientes y productos{% endblock %}
+
+{% block content %}
+<div class="b-example-divider"></div>
+
+<div class="container px-4 py-5" id="hanging-icons">
+    <div class="row align-items-md-stretch">
+        <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3">
+            <h2>Productos</h2>
+            <p>Puedes agregar, editar, descontinuar o eliminarlos</p>
+            <button class="btn btn-outline-secondary" type="button">Gestionar</button>
+        </div>
+        </div>
+        <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3">
+            <h2>Usuarios finales</h2>
+            <p>Gestiona los clientes finales, puedes editarlos o borralos</p>
+            <button class="btn btn-outline-secondary" type="button">Gestionar</button>
+        </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="container px-4 py-5" id="hanging-form">
+  <div class="col-md-4 col-lg-4">
+    <h4 class="mb-3">Información del producto</h4>
+    <form class="needs-validation" novalidate>
+      <div class="row g-3">
+        <div class="col-sm-6">
+          <label for="firstName" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+          <div class="invalid-feedback">
+            Valid first name is required.
+          </div>
+        </div>
+  
+        <div class="col-sm-6">
+          <label for="lastName" class="form-label">Código</label>
+          <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+          <div class="invalid-feedback">
+            Valid last name is required.
+          </div>
+        </div>
+  
+        <div class="col-12">
+          <label for="address2" class="form-label">Descripción</label>
+          <input type="text" class="form-control" id="address2">
+        </div>
+  
+        <div class="col-12">
+            <label for="address2" class="form-label">Url de la imagen</label>
+            <input type="text" class="form-control" id="address2">
+          </div>
+  
+      <hr class="my-4">
+  
+      <button class="btn btn-primary" type="submit">Registrar producto</button>
+    </form>
+  </div>
+</div>
+
+<div class="container px-4 py-5" id="hanging-products">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Producto1</h5>
+      <p class="card-text">Delicioso bla bla bla</p>
+      <a href="#" class="btn btn-primary">Ver detalle</a>
+      <a href="#" class="btn btn-primary">Editar</a>
+      <a href="#" class="btn btn-primary">Descontinuar</a>
+      <a href="#" class="btn btn-primary">Eliminar</a>
+  </div>
+</div>
+
+{% endblock %}
