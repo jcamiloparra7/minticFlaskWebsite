@@ -25,7 +25,7 @@ def catalogo():
         # else:
         #     redirect(url_for('auth.login'))
         #     flash('Antes de comprar debes iniciar sesion', category='info')
-
+    breakpoint()
     inventory = Product.query.all()
 
     return render_template("catalogo.html", inventario=inventory)
