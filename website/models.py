@@ -1,8 +1,8 @@
 from flask_login import UserMixin
 from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
-from sqlalchemy import ForeignKey, Column, Integer, String
-from uuid  import uuid4
+from sqlalchemy import ForeignKey, Column
+import uuid
 from strenum import StrEnum
 from enum import auto
 from website import db
@@ -44,7 +44,7 @@ class User(db.Model, UserMixin):
         USUARIO = auto()
 
     __tablename__ = "user"
-    id =  db.Column(primary_key=True, default=uuid4)
+    id = db.Column('id', db.Text(length=36), default=lambda: str(uuid.uuid4()), primary_key=True)
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
     first_name = db.Column(db.String(150), unique=True)

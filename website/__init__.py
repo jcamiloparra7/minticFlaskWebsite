@@ -14,7 +14,7 @@ def create_app():
     app.config['SECRET_KEY'] = 'Wzzup bitch'
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     migrate = Migrate(app, db)
-
+    from website.models import User, Product, Cart
     db.init_app(app)
     migrate.init_app(app, db)
 
@@ -26,7 +26,6 @@ def create_app():
     app.register_blueprint(auth, url_prefix='/')
     app.register_blueprint(admin, url_prefix='/admin')
 
-    from .models import User
 
     # create_database(app)
 
@@ -36,7 +35,7 @@ def create_app():
 
     @login_manager.user_loader
     def load_user(id):
-        return User.query.get(int(id))
+        return User.query.get(id)
 
     return app
 
