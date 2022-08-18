@@ -1,0 +1,25 @@
+Productos:
+    1. Perro Caliente. Descripción: Pan + Salchicha tipo Americana + Queso + Papa en Fósforo + Salsas
+                        Valor: 10.000
+                        Imágen:https://productossebaseba.com/wp-content/uploads/2021/02/Perro-copy.png
+    2. Crispetas. Descripción: Crispeta Mediana 120 gr de sal
+                    Valor: 12.000
+                    Imágen: https://cdn2.salud180.com/sites/default/files/styles/medium/public/field/image/2019/11/palomitas-maiz-peso.jpg
+    3. Nachos con Queso. Descripción: Paquete de Nachos 60 gr + Queso cheddar 85 gr
+                        Valor: 15.000
+                        Imágen: https://www.divinacocina.es/wp-content/uploads/nachos-con-salsa-queso.jpg
+    4. Bebidas. Descripción: Gaseosa de 640 ml
+                Valor: 8.000
+                Imágen: https://archivos-cms.cinecolombia.com/images/_aliases/medium/1/0/5/7/7501-6-esl-CO/choco%20otra%20vez.jpg
+    5. Chocolatinas. Descripción: 2 Chocolatinas JET 30 gr + 1 KITKAT 42 gr
+                    Valor: 5.000
+                    Imágen: https://archivos-cms.cinecolombia.com/images/_aliases/medium/1/0/5/7/7501-6-esl-CO/choco%20otra%20vez.jpg
+    6. Gomitas. Descripción: Paquete de Gomitas Aros Frutal 90 gr
+                Valor: 3.500
+                Imágen: https://olimpica.vtexassets.com/arquivos/ids/621090-800-auto?v=637626530911530000&width=800&height=auto&aspect=true
+    7. Combo Crispetas. Descripción: 1 Crispeta 120 gr + 1 Gaseosa 640 ml
+                        Valor: 17.000
+                        Imágen: https://www.beneficiosbancognb.com.py/imagenes/1467_cine-combo.png
+    8. Combo Perro. Descripción: 1 Perro Caliente + 1 Gaseosa 640 ml
+                    Valor: 15.000
+                    Imágen: https://static.vecteezy.com/system/resources/previews/000/489/243/non_2x/vector-paper-cup-with-soda-and-hotdog.jpg
