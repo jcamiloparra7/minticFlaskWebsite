@@ -4,7 +4,7 @@ Por:
     Juan Camilo Parra
     Laura Carrillo
     Laura Pinzón
-    Mauricio
+    Mauricio Martínez
     Natalia Morales Ruiz
 
 Tecnologías:
