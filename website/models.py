@@ -2,14 +2,17 @@ from flask_login import UserMixin
 from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
 from sqlalchemy import ForeignKey, Column, Integer, String
+from uuid  import uuid4
+from strenum import StrEnum
+from enum import auto
 from website import db
 
-users_products = db.Table('users_products',
-    db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-    db.Column('product_id', db.Integer, db.ForeignKey('products.id'), primary_key=True),
-    db.Column('quantity', db.Integer),
-    db.Column('date', db.DateTime(timezone=True), default=func.now())
-    )
+# users_products = db.Table('users_products',
+#     db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+#     db.Column('product_id', db.Integer, db.ForeignKey('products.id'), primary_key=True),
+#     db.Column('quantity', db.Integer),
+#     db.Column('date', db.DateTime(timezone=True), default=func.now())
+#     )
 
 # class CartItems(db.Model):
 #     __tablename__ = "car_items"
@@ -20,35 +23,37 @@ users_products = db.Table('users_products',
 #     # item = relationship("Product")
 
 class Product(db.Model):
-    __tablename__ = "products"
+    __tablename__ = "product"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Integer)
     price = db.Column(db.String(255), nullable=True)
-
+    image_url = db.Column(db.String(200))
     users = relationship(
-        "User",
-        secondary=users_products,
-        back_populates="products"
+        "Cart",
+        back_populates="product"
     )
 
 
 
 class User(db.Model, UserMixin):
-    __tablename__ = "users"
+    class ROLES(StrEnum):
+        SUPERADMIN = auto()
+        ADMIN = auto()
+        USUARIO = auto()
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    __tablename__ = "user"
+    id =  db.Column(primary_key=True, default=uuid4)
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
     first_name = db.Column(db.String(150), unique=True)
     last_name = db.Column(db.String(150), unique=True)
+    rol = db.Column(db.String(20), default=ROLES.USUARIO.value)
     # cart = relationship("CartItems")
-
     products = relationship(
-        "Product",
-        secondary=users_products,
-        back_populates="users"
+        "Cart",
+        back_populates="user"
     )
 
 # class Product(db.Model):
@@ -69,16 +74,16 @@ class User(db.Model, UserMixin):
 #     first_name = db.Column(db.String(150), unique=True)
 #     last_name = db.Column(db.String(150), unique=True)
 
-# class Cart(db.Model):
-    # __tablename__ = 'cart'
-    # id = db.Column(db.Integer, primary_key=True)
-    # product_id = Column(Integer, ForeignKey('product.id'), primary_key=True)
-    # user_id = Column(Integer, ForeignKey('user.id'), primary_key=True)
-    # date = db.Column(db.DateTime(timezone=True), default=func.now())
-    # quantity= db.Column(db.Integer)
-    # product = relationship("Product", back_populates="user")
-    # user = relationship("User", back_populates="product")
-    # cart = db.relationship('Cart')
+class Cart(db.Model):
+    __tablename__ = 'cart'
+    id = db.Column(db.Integer, primary_key=True)
+    product_id = Column(ForeignKey('product.id'), primary_key=True)
+    user_id = Column(ForeignKey('user.id'), primary_key=True)
+    quantity= db.Column(db.Integer)
+    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    product = relationship("Product", back_populates="users")
+    user = relationship("User", back_populates="products")
+
 
 
 # class Cart(db.Model):
