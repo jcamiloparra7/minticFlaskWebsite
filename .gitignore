@@ -1,12 +1,9 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
-<<<<<<< HEAD
-__pycache__/*
-=======
->>>>>>> master
+*__pycache__*
 *.py[cod]
 *$py.class
-
+database.db
 # C extensions
 *.so
 
